@@ -18,5 +18,4 @@ Permitir a los usuarios registrar, consultar y eliminar sus gastos personales de
 ## Autor
 Gadiel Iván Núñez Gutiérrez
 
-## Captura de pantalla
-![Interfaz](imagen_ejecucion.png)
+
