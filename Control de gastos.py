@@ -24,6 +24,7 @@ def insertar_gasto():
     entrada_cantidad.delete(0, END)
     entrada_fecha.delete(0, END)
 
+
 app = Tk()
 app.title("Control de gastos")
 app.geometry("300x200")
@@ -40,7 +41,26 @@ Label(app, text="Fecha (YYYY-MM-DD):").pack()
 entrada_fecha = Entry(app)
 entrada_fecha.pack()
 
+def mostrar_gastos():
+    conn = sqlite3.connect('gastos.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM gastos")
+    registros = cursor.fetchall()
+    conn.close()
+
+    ventana = Toplevel(app)
+    ventana.title("Gastos registrados")
+
+    for gasto in registros:
+        texto = f"ID: {gasto[0]} | Categoría: {gasto[1]} | Cantidad: {gasto[2]} | Fecha: {gasto[3]}"
+        Label(ventana, text=texto).pack()
+
 Button(app, text="Agregar gasto", command=insertar_gasto).pack()
+Button(app, text="Mostrar gastos", command=mostrar_gastos).pack()
+
 
 crear_db()
 app.mainloop()
+
+
+
