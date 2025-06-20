@@ -2,7 +2,7 @@ import sqlite3
 from tkinter import *
 
 def crear_db():
-    conn = sqlite3.connect('gastosdb')
+    conn = sqlite3.connect('gastos.db')
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS gastos (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -14,7 +14,7 @@ def crear_db():
     conn.close()
 
 def insertar_gasto():
-    conn = sqlite3.connect('gastosdb')
+    conn = sqlite3.connect('gastos.db')
     cursor = conn.cursor()
     cursor.execute("INSERT INTO gastos (categoria, cantidad, fecha) VALUES (?, ?, ?)",
                    (entrada_categoria.get(), entrada_cantidad.get(), entrada_fecha.get()))
